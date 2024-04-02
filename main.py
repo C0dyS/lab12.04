@@ -1,32 +1,16 @@
-class Calculator:
-    @classmethod
-    def add(cls,x,y):
-        return x + y
-    @classmethod
-    def subtract(cls,x,y):
-        return x - y
-    @classmethod
-    def multiply(cls,x,y):
-        return x * y
-    @classmethod
-    def divide(cls,x,y):
-        if y == 0:
-            raise ValueError("Division by zero is not allowed")
-        else:
-            return x / y
-    @classmethod
-    def __call__(cls,operation_type,a,b):
-        if operation_type == 'add':
-            return cls.add(a,b)
-        elif operation_type == 'subtract':
-            return cls.subtract(a,b)
-        elif operation_type == 'multiply':
-            return cls.multiply(a,b)
-        elif operation_type == 'divide':
-            return cls.divide(a,b)
-        else:
-            raise ValueError('Wrong operation type')
+class User:
+    def __init__(self,name,age):
+        self._name = name
+        self._age = age
 
-test_1 = Calculator()
-print(test_1('add',1,3))
-print(test_1('divide',1,3))
+    @property
+    def age(self):
+        return self._age
+    @age.getter
+    def age(self):
+        return self._age
+    @age.setter
+    def age(self,new_age_value):
+        if new_age_value < 0 or new_age_value > 120:
+            raise ValueError('incorrect age value')
+        else: self._age = new_age_value
