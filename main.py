@@ -1,7 +1,7 @@
 class FileWeightDescriptor:
 
     def __get__(self, instance, owner):
-        return instance._size
+        return self.format_size(instance._size)
 
     def __set__(self,instance,value):
         if value < 0:
@@ -25,5 +25,5 @@ class File:
 
 file1 = File(1024)
 print(file1.size)
-print(FileWeightDescriptor().format_size(file1.size))
+
 
